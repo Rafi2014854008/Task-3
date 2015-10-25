@@ -1,0 +1,42 @@
+/*
+ * ITT786: Curl Filter 
+ * Author: Rafi Faizal Bin Zainal Abidin
+ * Matrix No: 2014854008
+ * Email Address: roughfee89@gmail.com
+ * Github Account: https://github.com/rafi2014854008 
+ */
+package curl.in.java;
+
+import java.io.IOException;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+
+
+public class CurlFilter {
+    
+    public static void main(String[] args) {
+    Document doc;
+		try{
+			doc = Jsoup.connect("http://fskm.uitm.edu.my/v1/fakulti/staff-directory/academic/1097.html").get();
+			String Title = doc.title();
+			System.out.println("Title of the page "+ Title);
+			
+			Elements urls = doc.select("a");
+			
+			for(Element url:urls){
+				System.out.println("\nHref Tag <a>: " + url.attr("href"));
+				System.out.println("\nHref Tag <a>: " + url.text() );
+				
+			}
+			
+			
+		}catch(IOException e){
+			
+		}
+
+	}
+    
+}
